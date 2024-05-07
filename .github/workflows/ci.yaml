@@ -1,0 +1,27 @@
+name: Backed CI docker build and push to Dockerhub 
+
+on: 
+   push:
+     branches:
+       - "master"
+
+jobs:
+  Docker_Build_And_Push:
+      name: Build and Push Docker image to Docker Hub
+      runs-on: ubuntu-latest
+      steps:
+        - name: Git Checkout
+          uses: actions/checkout@v3
+        - name: Login to Docker Hub
+          uses: docker/login-action@v2
+          with:
+            username: ${{secrets.DOCKERHUB_ID}}
+            password: ${{secrets.DOCKERHUB_PASSWORD}}
+        - name: Build And Push Docker image
+          uses: docker/build-push-action@v2
+          with:
+             context: .
+             push: true
+             tag: bhasmeht/bookstorebackend:${{github.run_number}}
+               
+      
