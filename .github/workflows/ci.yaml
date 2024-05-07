@@ -22,6 +22,6 @@ jobs:
           with:
              context: .
              push: true
-             tag: bhasmeht/bookstorebackend:${{github.run_number}}
+             tags: bhasmeht/bookstorebackend:${{github.run_number}}
                
       
