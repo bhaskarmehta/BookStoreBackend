@@ -8,7 +8,9 @@ import cors from 'cors';
 dotenv.config();
 
 const app = express();
-app.use(cors());
+app.use(cors({
+    origin: "*"
+}))
 app.use(express.json()); // It will parse the req.body data into Json. If we do not use then will get error
 const PORT = process.env.PORT || 4001;
 const URI = process.env.DBConnection;
